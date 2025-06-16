@@ -1,0 +1,64 @@
+@mixin Display($items, $space, $gap, $fd) {
+    display: flex;
+    align-items: $items;
+    justify-content: $space;
+    gap: $gap;
+    flex-direction: $fd;
+}
+
+@mixin TextStyle($fw: 700, $fs: 40px, $lh: 60px, $ls: 0px, $clr: var(--color-text), $mb: 18px) {
+    font-weight: $fw;
+    font-size: $fs;
+    line-height: $lh;
+    letter-spacing: $ls;
+    color: $clr;
+    margin-bottom: $mb;
+}
+
+@mixin BtnStyle($w, $p, $bg, $btnclr, $btnmb) {
+    @include TextStyle($fw: 700, $fs: 16px, $lh: 100%, $ls: 0px, $clr: $btnclr, $mb: $btnmb);
+    width: $w;
+    padding: $p;
+    border-radius: 4px;
+    border: 2px solid $bg;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+
+    &::before {
+        content: '';
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: $bg;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+
+    &::after {
+        content: '';
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $bg;
+        z-index: -1;
+        transition: all 0.4s;
+    }
+
+    &:hover::before {
+        left: -100%;
+    }
+
+    &:hover {
+        color: $bg;
+    }
+
+    &:hover::after {
+        right: -100%;
+    }
+}

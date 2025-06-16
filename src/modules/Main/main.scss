@@ -1,0 +1,58 @@
+@use '/mixin.scss' as *;
+
+.hero_section {
+    padding: 25px 0 114px;
+
+    @media (max-width: 512px) {
+        padding: 29px 0 99px;
+    }
+}
+
+.hero {
+    @include Display($items: center, $space: space-between, $gap: 0px, $fd: row);
+
+    @media (max-width: 1040px) {
+        @include Display($items: center, $space: space-between, $gap: 10px, $fd: column-reverse);
+    }
+
+    &__content-wrapper {
+        width: 419px;
+
+        @media (max-width: 1040px) {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    &__title {
+        @include TextStyle($fw: 700, $fs: 40px, $lh: 60px, $ls: 0px, $clr: var(--color-text), $mb: 18px);
+
+        @media (max-width: 512px) {
+            @include TextStyle($fw: 700, $fs: 36px, $lh: 40px, $ls: 0px, $clr: var(--color-text), $mb: 18px);
+
+        }
+    }
+
+    &__desc {
+        @include TextStyle($fw: 400, $fs: 18px, $lh: 28px, $ls: 0px, $clr: var(--color-text), $mb: 45px);
+    }
+
+    .btns {
+        @include Display($items: center, $space: start, $gap: 30px, $fd: row);
+
+        @media (max-width: 1040px) {
+            @include Display($items: center, $space: center, $gap: 30px, $fd: row);
+        }
+
+        &__btn-started {
+            @include BtnStyle($w: 175px, $p: 15px 0, $bg: var(--color-gr), $btnclr: white, $btnmb: 0px)
+        }
+
+        &__btn-watch {
+            @include Display($items: center, $space: start, $gap: 8px, $fd: row);
+            text-decoration: underline;
+            text-decoration-style: solid;
+            @include TextStyle($fw: 600, $fs: 16px, $lh: 100%, $ls: 0px, $clr: var(--color-gr), $mb: 5px);
+        }
+    }
+}
